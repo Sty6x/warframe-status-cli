@@ -1,9 +1,20 @@
 [
-  {"cetus": "cetusCycle"
+  {
+    "cetus(eidolon-hunts)": "cetusCycle"
   },
-  {"archon":"archonHunt"},
-  {"sortie":"sortie"},
-  {"cambion":"cambionCycle"},
-  {"nightwave":"nightwave"},
-  {"voidtrader":"voidTrade"}
+  {
+    "archon": "archonHunt"
+  },
+  {
+    "sortie": "sortie"
+  },
+  {
+    "cambion-drift": "cambionCycle"
+  },
+  {
+    "night-wave": "nightwave"
+  },
+  {
+    "void-trader": "voidTrader"
+  }
 ]
