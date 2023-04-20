@@ -16,7 +16,7 @@ const languageJson = JSON.parse(
 eventEmitter.on("wf-init", (bool) => {
   console.clear();
   if (bool) {
-    console.log(boxen('Warframe Cli Status',{padding:1}));
+    console.log(boxen("Warframe Cli Status", { padding: 1 }));
     getUserInputs();
   }
 });
@@ -28,7 +28,7 @@ async function getUserInputs() {
   const missionTypes = missionsJson.map((mission) => {
     return Object.keys(mission)[0];
   });
-  const input = await inquirer.prompt({
+  const missionInput = await inquirer.prompt({
     name: "input",
     type: "list",
     message: `Please Pick a Mission type to get it's current status`,
@@ -42,18 +42,18 @@ async function getUserInputs() {
     choices: languageJson,
   });
 
-  const missionInput = await input;
-  const userInput = missionsJson.filter(
-    (mission) => mission[missionInput.input]
+  const missionData = await missionInput;
+  const mission = missionsJson.filter(
+    (missionJson) => missionJson[missionData.input]
   )[0];
-  const inputsObject = { userInput, queries: { ...languageQuery } };
+  const inputsObject = { mission, queries: { ...languageQuery } };
   console.log(inputsObject);
   eventEmitter.emit("userInput", inputsObject);
 }
 
-async function callWarframeApi({ userInput, queries }) {
-  const missionType = Object.values(userInput)[0];
-  const missionName = Object.keys(userInput)[0];
+async function callWarframeApi({ mission, queries }) {
+  const missionType = Object.values(mission)[0];
+  const missionName = Object.keys(mission)[0];
 
   const spinner = createSpinner(
     `Fetching Current ${missionName} Status...`
