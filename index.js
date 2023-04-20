@@ -72,10 +72,8 @@ async function callWarframeApi({ mission, queries }) {
 }
 
 eventEmitter.on("userInput", displayEventStatus);
-async function displayEventStatus(inputsObject){
-  const {mission,queries} = await inputsObject
-  const warframeEventStatus = await callWarframeApi({mission,queries})
-  console.log(warframeEventStatus)
-   
+async function displayEventStatus(inputsObject) {
+  const { mission, queries } = await inputsObject;
+  const warframeEventStatus = await callWarframeApi({ mission, queries });
+  console.log(warframeEventStatus);
 }
-
