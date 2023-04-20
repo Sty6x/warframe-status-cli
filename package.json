@@ -4,6 +4,7 @@
   "description": "Creating a cli to fetch and display current in-game status of the game warframe inside of the terminal",
   "main": "index.js",
   "type": "module",
+  "bin": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
