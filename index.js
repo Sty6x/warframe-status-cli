@@ -62,7 +62,6 @@ async function callWarframeApi({ mission, queries }) {
       `https://api.warframestat.us/pc/${missionType}?language=${queries.language}`
     );
     const jsonData = await endPoint.json();
-    console.log(jsonData);
     spinner.success({ text: `Current event status for ${missionName}` });
     return jsonData;
   } catch (err) {
@@ -75,5 +74,11 @@ eventEmitter.on("userInput", displayEventStatus);
 async function displayEventStatus(inputsObject) {
   const { mission, queries } = await inputsObject;
   const warframeEventStatus = await callWarframeApi({ mission, queries });
+  const missionName = Object.keys(mission)[0];
   console.log(warframeEventStatus);
+  const eventType = handleEventType(mission[missionName])
+}
+
+async function handleEventType(missionName){
+  console.log(missionName)
 }
