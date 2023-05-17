@@ -4,7 +4,9 @@
 	"description": "Creating a cli to fetch and display current in-game status of the game warframe inside of the terminal",
 	"main": "index.js",
 	"type": "module",
-	"bin": "./src/index.js",
+	"bin": {
+		"wf": "./src/index.js"
+	},
 	"keywords": [
 		"warframe",
 		"warframe-cli",
@@ -26,8 +28,6 @@
 	"homepage": "https://github.com/Sty6x/warframe-status-cli#readme",
 	"dependencies": {
 		"boxen": "^7.0.2",
-		"chalk": "^5.2.0",
-		"chalk-animation": "^2.0.3",
 		"inquirer": "^9.1.5",
 		"nanospinner": "^1.1.0"
 	}
