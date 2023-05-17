@@ -1,28 +1,34 @@
 {
-  "name": "warframe-status-cli",
-  "version": "1.0.0",
-  "description": "Creating a cli to fetch and display current in-game status of the game warframe inside of the terminal",
-  "main": "index.js",
-  "type": "module",
-  "bin": "./index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sty6x/warframe-status-cli.git"
-  },
-  "author": "Fdiaz",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Sty6x/warframe-status-cli/issues"
-  },
-  "homepage": "https://github.com/Sty6x/warframe-status-cli#readme",
-  "dependencies": {
-    "boxen": "^7.0.2",
-    "chalk": "^5.2.0",
-    "chalk-animation": "^2.0.3",
-    "inquirer": "^9.1.5",
-    "nanospinner": "^1.1.0"
-  }
+	"name": "warframe-status-cli",
+	"version": "1.0.0",
+	"description": "Creating a cli to fetch and display current in-game status of the game warframe inside of the terminal",
+	"main": "index.js",
+	"type": "module",
+	"bin": "./src/index.js",
+	"keywords": [
+		"warframe",
+		"warframe-cli",
+		"warframe-event",
+		"warframe-status"
+	],
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Sty6x/warframe-status-cli.git"
+	},
+	"author": "Fdiaz",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Sty6x/warframe-status-cli/issues"
+	},
+	"homepage": "https://github.com/Sty6x/warframe-status-cli#readme",
+	"dependencies": {
+		"boxen": "^7.0.2",
+		"chalk": "^5.2.0",
+		"chalk-animation": "^2.0.3",
+		"inquirer": "^9.1.5",
+		"nanospinner": "^1.1.0"
+	}
 }
