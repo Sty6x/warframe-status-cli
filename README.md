@@ -17,7 +17,7 @@ $ wf
 │   WARFRAME EVENT STATUS CLI   │
 │                               │
 └───────────────────────────────┘
-? Select a mission type to get it's current status (Use arrow keys)
+? Select a mission type to get its current status (Use arrow keys)
 ❯ all
   cetus (eidolon-hunts)
   archon

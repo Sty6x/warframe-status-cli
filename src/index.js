@@ -29,7 +29,7 @@ async function getUserInputs() {
 	const missionInput = await inquirer.prompt({
 		name: "input",
 		type: "list",
-		message: `Select a mission type to get it's current status`,
+		message: `Select a mission type to get its current status`,
 		choices: missionTypes,
 	});
 

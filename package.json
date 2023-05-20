@@ -1,6 +1,6 @@
 {
 	"name": "warframe-status-cli",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Creating a cli to fetch and display current in-game status of the game warframe inside of the terminal",
 	"main": "index.js",
 	"type": "module",
