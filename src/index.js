@@ -12,11 +12,12 @@ const languagesJson = JSON.parse(
 	await readFile(new URL("./languages.json", import.meta.url))
 );
 
-eventEmitter.on("wf-init", (isInit) => {
+eventEmitter.on("wf-init", async (isInit) => {
 	console.clear();
 	if (isInit) {
 		console.log(boxen("WARFRAME EVENT STATUS CLI", { padding: 1 }));
-		getUserInputs();
+		const input = await getUserInputs();
+		extractUserInputs(input);
 	}
 });
 
@@ -40,21 +41,21 @@ async function getUserInputs() {
 		choices: languagesJson,
 	});
 
-	const missionData = await missionInput;
+	return { missionInput, languageQuery };
+}
+
+function extractUserInputs({ missionInput, languageQuery }) {
 	const [mission] = missionsJson.filter(
-		(missionJson) => missionJson[missionData.input]
+		(missionJson) => missionJson[missionInput.input]
 	);
-	console.log(mission);
 	const inputsObject = {
 		mission: { name: Object.keys(mission), type: Object.values(mission) },
 		queries: { ...languageQuery },
 	};
-	console.log(inputsObject);
 	eventEmitter.emit("userInput", inputsObject);
 }
 
 async function callWarframeApi({ mission: { name, type }, queries }) {
-	console.log(name, type);
 	const spinner = createSpinner(
 		`Fetching current event status for ${name}...`
 	).start();
