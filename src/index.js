@@ -41,27 +41,29 @@ async function getUserInputs() {
 	});
 
 	const missionData = await missionInput;
-	const mission = missionsJson.filter(
+	const [mission] = missionsJson.filter(
 		(missionJson) => missionJson[missionData.input]
-	)[0];
-	const inputsObject = { mission, queries: { ...languageQuery } };
+	);
+	console.log(mission);
+	const inputsObject = {
+		mission: { name: Object.keys(mission), type: Object.values(mission) },
+		queries: { ...languageQuery },
+	};
 	console.log(inputsObject);
 	eventEmitter.emit("userInput", inputsObject);
 }
 
-async function callWarframeApi({ mission, queries }) {
-	const missionType = Object.values(mission)[0];
-	const missionName = Object.keys(mission)[0];
-
+async function callWarframeApi({ mission: { name, type }, queries }) {
+	console.log(name, type);
 	const spinner = createSpinner(
-		`Fetching current event status for ${missionName}...`
+		`Fetching current event status for ${name}...`
 	).start();
 	try {
 		const endPoint = await fetch(
-			`https://api.warframestat.us/pc/${missionType}?language=${queries.language}`
+			`https://api.warframestat.us/pc/${type}?language=${queries.language}`
 		);
 		const jsonData = await endPoint.json();
-		spinner.success({ text: `Current event status for ${missionName}` });
+		spinner.success({ text: `Current event status for ${name}` });
 		return jsonData;
 	} catch (err) {
 		spinner.error({ text: `Unable to fetch current warframe status` });
@@ -73,6 +75,5 @@ eventEmitter.on("userInput", displayEventStatus);
 async function displayEventStatus(inputsObject) {
 	const { mission, queries } = await inputsObject;
 	const warframeEventStatus = await callWarframeApi({ mission, queries });
-	const missionName = Object.keys(mission)[0];
 	console.log(warframeEventStatus);
 }
